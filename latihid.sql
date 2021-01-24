@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2021 at 03:06 PM
+-- Generation Time: Jan 24, 2021 at 12:51 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -37,10 +37,10 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
-(0, ''),
 (1, 'Kelas Gratis Populer'),
 (2, 'Kelas LatihID Terbaru'),
 (3, 'Expert Class'),
+(4, 'LatihID Modul'),
 (5, 'LatihID Talks'),
 (6, 'LatihID PETA'),
 (7, 'Kelas Memulai Bisnis'),
@@ -126,7 +126,18 @@ ALTER TABLE `kategori`
 -- Indexes for table `modul`
 --
 ALTER TABLE `modul`
-  ADD PRIMARY KEY (`id_modul`);
+  ADD PRIMARY KEY (`id_modul`),
+  ADD KEY `FK_kategroi_id` (`id_kategori`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `modul`
+--
+ALTER TABLE `modul`
+  ADD CONSTRAINT `FK_kategroi_id` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
